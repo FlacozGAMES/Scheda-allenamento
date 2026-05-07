@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scheda Completa – Casa, Palestra & Bulk</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f2ec;
+  --paper: #faf8f4;
+  --dark: #1a1814;
+  --mid: #3d3830;
+  --muted: #8a8070;
+  --border: #ddd8ce;
+  --home: #d4500a;
+  --home-lt: #fff0e8;
+  --home-bd: #f4c4a8;
+  --gym: #1a6b3c;
+  --gym-lt: #e8f5ee;
+  --gym-bd: #a8d8bc;
+  --bulk: #7c3aed;
+  --bulk-lt: #f5f0ff;
+  --bulk-bd: #c4a8f0;
+  --warn: #b84400;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--dark);font-family:'Nunito',sans-serif;min-height:100vh;padding:20px 14px 70px}
+.wrap{max-width:840px;margin:0 auto}
+
+/* HEADER */
+.hdr{text-align:center;padding:28px 0 24px;animation:fi .5s ease both}
+.hdr-eye{font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+h1{font-family:'Oswald',sans-serif;font-size:clamp(38px,10vw,72px);font-weight:700;line-height:1;letter-spacing:-1px}
+h1 em{font-style:normal;color:var(--bulk)}
+.hdr-sub{font-size:12px;color:var(--muted);margin-top:8px}
+
+/* TABS */
+.tabs{display:flex;gap:0;border-radius:14px;overflow:hidden;border:2px solid var(--border);margin-bottom:22px;animation:fi .5s .1s ease both}
+.tb{flex:1;padding:13px 8px;background:var(--paper);border:none;cursor:pointer;text-align:center;transition:all .2s;border-right:1px solid var(--border);font-family:'Nunito',sans-serif}
+.tb:last-child{border-right:none}
+.tb.ha{background:var(--home-lt)}
+.tb.ga{background:var(--gym-lt)}
+.tb.ba{background:var(--bulk-lt)}
+.tb-lbl{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.tb.ha .tb-lbl{color:var(--home)}
+.tb.ga .tb-lbl{color:var(--gym)}
+.tb.ba .tb-lbl{color:var(--bulk)}
+.tb-ttl{font-family:'Oswald',sans-serif;font-size:15px;font-weight:600;color:var(--muted);letter-spacing:.5px}
+.tb.ha .tb-ttl{color:var(--home)}
+.tb.ga .tb-ttl{color:var(--gym)}
+.tb.ba .tb-ttl{color:var(--bulk)}
+.tb-sub{font-size:10px;color:var(--muted);margin-top:2px}
+
+.tc{display:none}.tc.active{display:block}
+
+/* SECTION TITLE */
+.st{font-family:'Oswald',sans-serif;font-size:19px;font-weight:600;letter-spacing:1px;margin:22px 0 12px;display:flex;align-items:center;gap:7px;padding-bottom:7px;border-bottom:2px solid var(--border)}
+.st.hc{color:var(--home);border-color:var(--home-bd)}
+.st.gc{color:var(--gym);border-color:var(--gym-bd)}
+.st.bc{color:var(--bulk);border-color:var(--bulk-bd)}
+.st:first-child{margin-top:0}
+
+/* WEEK ROW */
+.wrow{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:18px}
+@media(max-width:480px){.wrow{grid-template-columns:repeat(4,1fr)}}
+.dp{border-radius:9px;padding:8px 3px;text-align:center;border:1.5px solid var(--border);background:var(--paper)}
+.dp .dn{font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.dp .di{font-size:15px}
+.dp.th{background:var(--home-lt);border-color:var(--home-bd)}.dp.th .dn{color:var(--home)}
+.dp.tg{background:var(--gym-lt);border-color:var(--gym-bd)}.dp.tg .dn{color:var(--gym)}
+.dp.tb2{background:var(--bulk-lt);border-color:var(--bulk-bd)}.dp.tb2 .dn{color:var(--bulk)}
+.dp.rc{background:#f0f0f0;border-color:#ddd}.dp.rc .dn{color:#bbb}
+.dp.ld{background:#fff8e0;border-color:#ffe090}.dp.ld .dn{color:#997700}
+
+/* CARDS */
+.cards{display:flex;flex-direction:column;gap:12px}
+.card{background:var(--paper);border-radius:13px;overflow:hidden}
+.card.hcard{border:1.5px solid var(--home-bd)}
+.card.gcard{border:1.5px solid var(--gym-bd)}
+.card.bcard{border:1.5px solid var(--bulk-bd)}
+.chead{display:flex;align-items:center;gap:11px;padding:13px 15px}
+.hcard .chead{background:var(--home-lt);border-bottom:1px solid var(--home-bd)}
+.gcard .chead{background:var(--gym-lt);border-bottom:1px solid var(--gym-bd)}
+.bcard .chead{background:var(--bulk-lt);border-bottom:1px solid var(--bulk-bd)}
+.cico{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;background:white}
+.cttl{font-family:'Oswald',sans-serif;font-size:14px;font-weight:600;letter-spacing:.5px}
+.hcard .cttl{color:var(--home)}.gcard .cttl{color:var(--gym)}.bcard .cttl{color:var(--bulk)}
+.csub{font-size:11px;color:var(--muted);margin-top:1px}
+.cbadge{margin-left:auto;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:20px;white-space:nowrap}
+.hcard .cbadge{background:white;color:var(--home);border:1px solid var(--home-bd)}
+.gcard .cbadge{background:white;color:var(--gym);border:1px solid var(--gym-bd)}
+.bcard .cbadge{background:white;color:var(--bulk);border:1px solid var(--bulk-bd)}
+
+/* EXERCISE ROWS */
+.exl{padding:3px 0 5px}
+.exr{display:flex;align-items:center;padding:9px 15px;border-bottom:1px solid rgba(0,0,0,.05);gap:9px;transition:background .15s}
+.exr:last-child{border-bottom:none}
+.exr:hover{background:rgba(0,0,0,.02)}
+.exn{width:19px;height:19px;border-radius:5px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:var(--muted);flex-shrink:0}
+.exnm{font-size:12.5px;font-weight:600;flex:1;color:var(--dark)}
+.pill{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:6px;white-space:nowrap;flex-shrink:0}
+.ph{background:#ffe8d8;color:var(--home)}
+.pg{background:#d8eed8;color:var(--gym)}
+.pb{background:#ead8ff;color:var(--bulk)}
+
+/* INFO BOXES */
+.ib{border-radius:10px;padding:12px 14px;font-size:12.5px;line-height:1.7;margin-top:12px}
+.ib.o{background:var(--home-lt);border:1.5px solid var(--home-bd);color:#7a3010}
+.ib.g{background:var(--gym-lt);border:1.5px solid var(--gym-bd);color:#1a4a2a}
+.ib.b{background:var(--bulk-lt);border:1.5px solid var(--bulk-bd);color:#4a2090}
+.ib.w{background:#fff5e0;border:1.5px solid #ffd080;color:#664400}
+.ib.s{background:#eef3ff;border:1.5px solid #a8bce8;color:#1a3580}
+
+/* GRID LAYOUTS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}
+@media(max-width:520px){.g2{grid-template-columns:1fr}.g3{grid-template-columns:1fr 1fr}}
+
+/* STAT CARDS */
+.sc{background:white;border:1.5px solid var(--border);border-radius:10px;padding:11px;text-align:center}
+.sv{font-family:'Oswald',sans-serif;font-size:26px;font-weight:700;line-height:1}
+.sv.h{color:var(--home)}.sv.g{color:var(--gym)}.sv.b{color:var(--bulk)}
+.sl{font-size:10px;color:var(--muted);margin-top:3px;line-height:1.3}
+
+/* CHECK CARDS */
+.cc{border-radius:11px;padding:13px;border:1.5px solid}
+.cc.yes{background:var(--gym-lt);border-color:var(--gym-bd)}
+.cc.no{background:#fff5e0;border-color:#ffd080}
+.cc-t{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.cc.yes .cc-t{color:var(--gym)}.cc.no .cc-t{color:var(--warn)}
+.cc ul{list-style:none;font-size:12px;line-height:1.8;color:var(--mid)}
+.cc.yes ul li::before{content:'✓ ';color:var(--gym);font-weight:700}
+.cc.no ul li::before{content:'✗ ';color:var(--warn);font-weight:700}
+
+/* TIPS */
+.tips{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+@media(max-width:480px){.tips{grid-template-columns:1fr}}
+.tip{background:white;border:1.5px solid var(--border);border-radius:10px;padding:11px 13px;font-size:12px;line-height:1.6;color:var(--mid);display:flex;gap:8px}
+.ti{font-size:16px;flex-shrink:0}
+
+/* BULK SPECIFIC */
+.bulk-hero{background:var(--bulk);border-radius:14px;padding:18px 20px;display:flex;align-items:center;gap:16px;margin-bottom:16px;flex-wrap:wrap}
+.bh-num{font-family:'Oswald',sans-serif;font-size:50px;font-weight:700;color:white;line-height:1;flex-shrink:0}
+.bh-txt{color:#ddd0ff;font-size:12.5px;line-height:1.65}
+.bh-txt strong{color:white}
+
+.meal-table{background:white;border:1.5px solid var(--bulk-bd);border-radius:12px;overflow:hidden;margin-top:14px}
+.mt-head{background:var(--bulk);color:white;font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;letter-spacing:1px;padding:9px 15px}
+.mr{display:flex;align-items:flex-start;padding:10px 15px;border-bottom:1px solid #f0eaf8;gap:11px}
+.mr:last-child{border-bottom:none}
+.mr:hover{background:#faf8ff}
+.mtime{font-family:'Oswald',sans-serif;font-size:11px;font-weight:600;color:var(--bulk);min-width:52px;flex-shrink:0;padding-top:1px}
+.mname{font-size:12.5px;font-weight:700;color:var(--dark);margin-bottom:2px}
+.mdetail{font-size:11.5px;color:var(--muted);line-height:1.5}
+.mkcal{margin-left:auto;flex-shrink:0;font-family:'Oswald',sans-serif;font-size:13px;font-weight:700;color:var(--bulk);padding-top:1px}
+
+.shake-when{background:white;border:1.5px solid var(--bulk-bd);border-radius:12px;overflow:hidden;margin-top:14px}
+.sw-head{background:linear-gradient(90deg,var(--bulk),#2255aa);color:white;font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;letter-spacing:1px;padding:9px 15px}
+.sw-row{display:flex;align-items:center;padding:10px 15px;border-bottom:1px solid #f0eaf8;gap:10px}
+.sw-row:last-child{border-bottom:none}
+.sw-day{font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;color:var(--bulk);min-width:80px;flex-shrink:0}
+.sw-info{font-size:12px;color:var(--dark);flex:1;line-height:1.5}
+.sw-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.sw-dot.yes{background:#1a6b3c}
+.sw-dot.half{background:#f09020}
+.sw-dot.no{background:#ccc}
+
+.progress-box{background:white;border:1.5px solid var(--bulk-bd);border-radius:12px;padding:16px;margin-top:14px}
+.pb-title{font-family:'Oswald',sans-serif;font-size:13px;color:var(--bulk);letter-spacing:.5px;margin-bottom:12px}
+.pb-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.pb-label{font-size:11.5px;color:var(--mid);min-width:110px;flex-shrink:0}
+.pb-bar-wrap{flex:1;background:#f0eaff;border-radius:20px;height:8px;overflow:hidden}
+.pb-bar{height:100%;border-radius:20px;background:linear-gradient(90deg,var(--bulk),#2255aa)}
+.pb-val{font-size:11px;font-weight:700;color:var(--bulk);min-width:40px;text-align:right}
+
+@keyframes fi{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-eye">🏋️ 15 anni · 175–180cm · 40–50kg · ectomorfo</div>
+  <h1>CASA · GYM<br><em>· BULK ·</em></h1>
+  <p class="hdr-sub">Scheda completa in 3 sezioni · allenamento + alimentazione + shake</p>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <button class="tb ha" onclick="sw('home')">
+    <div class="tb-lbl">🏠 Fase 1</div>
+    <div class="tb-ttl">CASA</div>
+    <div class="tb-sub">3kg · 6gg/sett</div>
+  </button>
+  <button class="tb" onclick="sw('gym')">
+    <div class="tb-lbl">☀️ Fase 2</div>
+    <div class="tb-ttl">PALESTRA</div>
+    <div class="tb-sub">Dal 1° luglio</div>
+  </button>
+  <button class="tb" onclick="sw('bulk')">
+    <div class="tb-lbl">🍽️ Sempre</div>
+    <div class="tb-ttl">BULK</div>
+    <div class="tb-sub">Alimentazione</div>
+  </button>
+</div>
+
+<!-- ═══════════ CASA ═══════════ -->
+<div id="home" class="tc active">
+
+  <div class="st hc" style="margin-top:0">📅 Struttura Settimana — Casa</div>
+  <div class="wrow">
+    <div class="dp th"><div class="dn">Lun</div><div class="di">💪</div></div>
+    <div class="dp th"><div class="dn">Mar</div><div class="di">💪</div></div>
+    <div class="dp th"><div class="dn">Mer</div><div class="di">💪</div></div>
+    <div class="dp th"><div class="dn">Gio</div><div class="di">💪</div></div>
+    <div class="dp th"><div class="dn">Ven</div><div class="di">💪</div></div>
+    <div class="dp th"><div class="dn">Sab</div><div class="di">💪</div></div>
+    <div class="dp rc"><div class="dn">Dom</div><div class="di">😴</div></div>
+  </div>
+
+  <div class="ib o">⚡ <strong>Schema A/B alternato:</strong> Scheda A nei giorni dispari (Lun, Mer, Ven), Scheda B nei giorni pari (Mar, Gio, Sab). Mai lo stesso gruppo muscolare 2 giorni di fila. La domenica riposo totale — obbligatorio.</div>
+
+  <!-- SHAKE CASA -->
+  <div class="st hc">🥤 Shake a casa — Serve?</div>
+  <div class="ib s">Con manubri da 3kg lo stress muscolare è basso. <strong>Lo shake non è necessario</strong>, ma se vuoi prenderlo comunque: prendilo <strong>dopo l'allenamento</strong> con un po' di latte e una banana. La priorità però è mangiare tanto e bene. Per il tuo caso, il frullato bulk fai-da-te (vedi tab Bulk) vale 10 volte più di una whey.</div>
+
+  <!-- SCHEDA A -->
+  <div class="st hc">🔥 Scheda A — Lun · Mer · Ven</div>
+  <div class="ib o" style="margin-top:0;margin-bottom:12px">Petto · Tricipiti · Spalle · Core — ~40 minuti</div>
+  <div class="cards">
+
+    <div class="card hcard">
+      <div class="chead"><div class="cico">🏃</div><div><div class="cttl">RISCALDAMENTO</div><div class="csub">5 min · obbligatorio · mai saltarlo</div></div><span class="cbadge">SEMPRE</span></div>
+      <div class="exl">
+        <div class="exr"><div class="exn">→</div><div class="exnm">Jumping jack</div><span class="pill ph">1 min</span></div>
+        <div class="exr"><div class="exn">→</div><div class="exnm">Corsa sul posto con ginocchia alte</div><span class="pill ph">1 min</span></div>
+        <div class="exr"><div class="exn">→</div><div class="exnm">Rotazioni spalle + collo + fianchi</div><span class="pill ph">1 min</span></div>
+        <div class="exr"><div class="exn">→</div><div class="exnm">10 push-up leggeri (warm-up)</div><span class="pill ph">10 reps</span></div>
+      </div>
+    </div>
+
+    <div class="card hcard">
+      <div class="chead"><div class="cico">💛</div><div><div class="cttl">PETTO</div><div class="csub">Push-up + manubri 3kg · ~12 min</div></div><span class="cbadge">PETTO</span></div>
+      <div class="exl">
+        <div class="exr"><div class="exn">1</div><div class="exnm">Push-up classici</div><span class="pill ph">4 × 15–20</span></div>
+        <div class="exr"><div class="exn">2</div><div class="exnm">Push-up stretti (mani vicine, tricipiti)</div><span class="pill ph">3 × 12</span></div>
+        <div class="exr"><div class="exn">3</div><div class="exnm">Croci con manubri 3kg (sdraiati a terra)</div><span class="pill ph">4 × 15</span></div>
+        <div class="exr"><div class="exn">4</div><div class="exnm">Pullover con manubrio 3kg</div><span class="pill ph">3 × 15</span></div>
+      </div>
+    </div>
+
+    <div class="card hcard">
+      <div class="chead"><div class="cico">💪</div><div><div class="cttl">TRICIPITI + SPALLE</div><div class="csub">Manubri 3kg · ~13 min</div></div><span class="cbadge">SPINTE</span></div>
+      <div class="exl">
+        <div class="exr"><div class="exn">1</div><div class="exnm">French press con manubri 3kg</div><span class="pill ph">4 × 15</span></div>
+        <div class="exr"><div class="exn">2</div><div class="exnm">Kick-back tricipiti (manubrio, busto inclinato)</div><span class="pill ph">3 × 15</span></div>
+        <div class="exr"><div class="exn">3</div><div class="exnm">Lento avanti manubri 3kg (spalle)</div><span class="pill ph">4 × 15</span></div>
+        <div class="exr"><div class="exn">4</div><div class="exnm">Alzate laterali manubri 3kg</div><span class="pill ph">4 × 20</span></div>
+        <div class="exr"><div class="exn">5</div><div class="exnm">Alzate frontali manubri 3kg</div><span class="pill ph">3 × 15</span></div>
+      </div>
+    </div>
+
+    <div class="card hcard">
+      <div class="chead"><div class="cico">🔥</div><div><div class="cttl">CORE (addome)</div><div class="csub">Ogni sessione, sempre alla fine · ~8 min</div></div><span class="cbadge">CORE</span></div>
+      <div class="exl">
+        <div class="exr"><div class="exn">1</div><div class="exnm">Plank isometrico</div><span class="pill ph">3 × 40 sec</span></div>
+        <div class="exr"><div class="exn">2</div><div class="exnm">Crunch classici</div><span class="pill ph">3 × 20</span></div>
+        <div class="exr"><div class="exn">3</div><div class="exnm">Leg raise (alzate gambe tese)</div><span class="pill ph">3 × 15</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SCHEDA B -->
+  <div class="st hc">🔥 Scheda B — Mar · Gio · Sab</div>
+  <div class="ib o" style="margin-top:0;margin-bottom:12px">Schiena · Bicipiti · Gambe · Core — ~40 minuti</div>
+  <div class="cards">
+
+    <div class="card hcard">
+      <div class="chead"><div class="cico">💙</div><div><div class="cttl">SCHIENA + BICIPITI</div><div class="csub">Manubri 3kg · ~18 min</div></div><span class="cbadge">PULL</span></div>
+      <div class="exl">
+        <div class="exr"><div class="exn">1</div><div class="exnm">Rematore con manubrio (un braccio, schiena piatta)</div><span class="pill ph">4 × 20</span></div>
+        <div class="exr"><div class="exn">2</div><div class="exnm">Superman a terra (lombare)</div><span class="pill ph">4 × 15</span></div>
+        <div class="exr"><div class="exn">3</div><div class="exnm">Bird-dog alternati (equilibrio + core)</div><span class="pill ph">3 × 12 p/lato</span></div>
+        <div class="exr"><div class="exn">4</div><div class="exnm">Curl bicipiti manubri 3kg</div><span class="pill ph">4 × 20</span></div>
+        <div class="exr"><div class="exn">5</div><div class="exnm">Curl a martello manubri 3kg</div><span class="pill ph">3 × 15</span></div>
+        <div class="exr"><div class="exn">6</div><div class="exnm">Curl concentrato un braccio</div><span class="pill ph">3 × 12 p/braccio</span></div>
+      </div>
+    </div>
+
+    <div class="card hcard">
+      <div class="chead"><div class="cico">🧡</div><div><div class="cttl">GAMBE</div><div class="csub">Corpo libero + manubri 3kg · ~15 min · alta ripetizione</div></div><span class="cbadge">LEGS</span></div>
+      <div class="exl">
+        <div class="exr"><div class="exn">1</div><div class="exnm">Squat corpo libero (alta ripetizione)</div><span class="pill ph">4 × 25</span></div>
+        <div class="exr"><div class="exn">2</div><div class="exnm">Affondi alternati con manubri 3kg</div><span class="pill ph">4 × 15 p/gamba</span></div>
+        <div class="exr"><div class="exn">3</div><div class="exnm">Hip thrust corpo libero (glutei)</div><span class="pill ph">4 × 20</span></div>
+        <div class="exr"><div class="exn">4</div><div class="exnm">Affondi laterali</div><span class="pill ph">3 × 12 p/lato</span></div>
+        <div class="exr"><div class="exn">5</div><div class="exnm">Calf raises mono-gamba</div><span class="pill ph">4 × 20 p/gamba</span></div>
+      </div>
+    </div>
+
+    <div class="card hcard">
+      <div class="chead"><div class="cico">🔥</div><div><div class="cttl">CORE (addome)</div><div class="csub">Variante B · ogni sessione · ~8 min</div></div><span class="cbadge">CORE</span></div>
+      <div class="exl">
+        <div class="exr"><div class="exn">1</div><div class="exnm">Plank laterale (dx + sx)</div><span class="pill ph">3 × 30 sec p/lato</span></div>
+        <div class="exr"><div class="exn">2</div><div class="exnm">Bicycle crunch</div><span class="pill ph">3 × 20</span></div>
+        <div class="exr"><div class="exn">3</div><div class="exnm">Mountain climber</div><span class="pill ph">3 × 30 sec</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="st hc">📊 Target Casa</div>
+  <div class="g3">
+    <div class="sc"><div class="sv h">6gg</div><div class="sl">settimana<br>(dom riposo)</div></div>
+    <div class="sc"><div class="sv h">~40</div><div class="sl">min per<br>sessione</div></div>
+    <div class="sc"><div class="sv h">A/B</div><div class="sl">alternanza<br>muscoli</div></div>
+    <div class="sc"><div class="sv h">15–25</div><div class="sl">reps per esercizio<br>(carichi leggeri)</div></div>
+    <div class="sc"><div class="sv h">8h</div><div class="sl">sonno<br>ogni notte</div></div>
+    <div class="sc"><div class="sv h">3000</div><div class="sl">kcal/giorno<br>obiettivo</div></div>
+  </div>
+
+  <div class="tips">
+    <div class="tip"><span class="ti">⏱️</span><span>Rallenta il movimento negativo (discesa) a <strong>3 secondi</strong> — rende i 3kg molto più difficili.</span></div>
+    <div class="tip"><span class="ti">📈</span><span>Aggiungi reps ogni settimana. Quando arrivi a <strong>25 reps facili</strong> su tutto, i 3kg sono troppo leggeri — comprane di più pesanti.</span></div>
+    <div class="tip"><span class="ti">🍳</span><span>Mangia entro <strong>30 min</strong> dopo: uova, latte, pollo, pasta. Il pasto post-workout è fondamentale.</span></div>
+    <div class="tip"><span class="ti">💧</span><span>Bevi <strong>2L+ d'acqua</strong> al giorno. La disidratazione riduce la performance del 10–20%.</span></div>
+  </div>
+
+</div><!-- /home -->
+
+<!-- ═══════════ PALESTRA ═══════════ -->
+<div id="gym" class="tc">
+
+  <div class="st gc" style="margin-top:0">📅 Struttura Settimana — Palestra (dal 1° Luglio)</div>
+  <div class="wrow">
+    <div class="dp tg"><div class="dn">Lun</div><div class="di">💪</div></div>
+    <div class="dp tg"><div class="dn">Mar</div><div class="di">💪</div></div>
+    <div class="dp ld"><div class="dn">Mer</div><div class="di">🚶</div></div>
+    <div class="dp tg"><div class="dn">Gio</div><div class="di">💪</div></div>
+    <div class="dp tg"><div class="dn">Ven</div><div class="di">💪</div></div>
+    <div class="dp tg"><div class="dn">Sab</div><div class="di">💪</div></div>
+    <div class="dp rc"><div class="dn">Dom</div><div class="di">😴</div></div>
+  </div>
+
+  <div class="ib g">📌 <strong>Schema Push/Pull/Legs:</strong> Lun (Push A) → Mar (Pull A) → Mer recupero attivo → Gio (Push B) → Ven (Pull B) → Sab (Gambe+Spalle) → Dom riposo totale. Il mercoledì divide la settimana in 2 blocchi senza sovrallenare.</div>
+
+  <!-- SHAKE GYM -->
+  <div class="st gc">🥤 Shake in Palestra — Quando e Come</div>
+  <div class="shake-when">
+    <div class="sw-head">🥤 Guida Shake Settimanale — Palestra</div>
+    <div class="sw-row">
+      <div class="sw-dot yes"></div>
+      <div class="sw-day">LUNEDÌ</div>
+      <div class="sw-info"><strong>SÌ — dopo allenamento</strong> · entro 60 min dal termine · 1 misurino whey in 250ml latte intero + banana</div>
+    </div>
+    <div class="sw-row">
+      <div class="sw-dot yes"></div>
+      <div class="sw-day">MARTEDÌ</div>
+      <div class="sw-info"><strong>SÌ — dopo allenamento</strong> · stessa cosa · aggiungi 2 gallette di riso o crackers per i carboidrati</div>
+    </div>
+    <div class="sw-row">
+      <div class="sw-dot no"></div>
+      <div class="sw-day">MERCOLEDÌ</div>
+      <div class="sw-info"><strong>NO</strong> · recupero attivo, niente pesi · mangia normalmente · lo shake non serve</div>
+    </div>
+    <div class="sw-row">
+      <div class="sw-dot yes"></div>
+      <div class="sw-day">GIOVEDÌ</div>
+      <div class="sw-info"><strong>SÌ — dopo allenamento</strong> · entro 60 min · 1 misurino whey + latte o acqua + carboidrato a lato</div>
+    </div>
+    <div class="sw-row">
+      <div class="sw-dot yes"></div>
+      <div class="sw-day">VENERDÌ</div>
+      <div class="sw-info"><strong>SÌ — dopo allenamento</strong> · puoi mischiare whey con latte intero per più calorie (ottimo per te)</div>
+    </div>
+    <div class="sw-row">
+      <div class="sw-dot yes"></div>
+      <div class="sw-day">SABATO</div>
+      <div class="sw-info"><strong>SÌ — dopo allenamento</strong> · sessione lunga (gambe) = più recupero necessario · shake + pasto completo entro 2h</div>
+    </div>
+    <div class="sw-row">
+      <div class="sw-dot no"></div>
+      <div class="sw-day">DOMENICA</div>
+      <div class="sw-info"><strong>NO</strong> · riposo totale · niente shake · mangia i tuoi pasti normali del bulk</div>
+    </div>
+  </div>
+
+  <div class="ib s" style="margin-top:12px">💡 <strong>Quale whey comprare:</strong> Scegli Whey Protein con minimo 20g proteine per dose, pochi ingredienti, certificata (MyProtein, Optimum Nutrition, BioTech). Costo: 25–40€ per 1kg (circa 30 dosi). Evita mass gainer e pre-workout.</div>
+
+  <div class="st gc">🔥 Esercizi Palestra</div>
+  <div class="cards">
+
+    <div class="card gcard">
+      <div class="chead"><div class="cico">💛</div><div><div class="cttl">LUNEDÌ — Petto &amp; Tricipiti (Push A)</div><div class="csub">~50 min · inizia leggero, impara la tecnica</div></div><span class="cbadge">PUSH A</span></div>
+      <div class="exl">
+        <div class="exr"><div class="exn">1</div><div class="exnm">Panca piana con manubri</div><span class="pill pg">4×10–12 · 8–10kg</span></div>
+        <div class="exr"><div class="exn">2</div><div class="exnm">Panca inclinata con manubri</div><span class="pill pg">3×12 · 6–8kg</span></div>
+        <div class="exr"><div class="exn">3</div><div class="exnm">Croci ai cavi o manubri</div><span class="pill pg">3×15 · 5–6kg</span></div>
+        <div class="exr"><div class="exn">4</div><div class="exnm">Dip alle parallele (assistito se serve)</div><span class="pill pg">3×8–10</span></div>
+        <div class="exr"><div class="exn">5</div><div class="exnm">French press EZ o manubrio</div><span class="pill pg">3×12 · 6–8kg</span></div>
+        <div class="exr"><div class="exn">6</div><div class="exnm">Push-down al cavo (tricipiti)</div><span class="pill pg">3×15</span></div>
+      </div>
+    </div>
+
+    <div class="card gcard">
+      <div class="chead"><div class="cico">💙</div><div><div class="cttl">MARTEDÌ — Schiena &amp; Bicipiti (Pull A)</div><div class="csub">~50 min</div></div><span class="cbadge">PULL A</span></div>
+      <div class="exl">
+        <div class="exr"><div class="exn">1</div><div class="exnm">Lat machine presa larga</div><span class="pill pg">4×10–12</span></div>
+        <div class="exr"><div class="exn">2</div><div class="exnm">Rematore con manubrio un braccio</div><span class="pill pg">4×10 · 12–14kg</span></div>
+        <div class="exr"><div class="exn">3</div><div class="exnm">Pulley basso (seated row)</div><span class="pill pg">3×12</span></div>
+        <div class="exr"><div class="exn">4</div><div class="exnm">Curl bilanciere EZ</div><span class="pill pg">4×12 · 10–12kg</span></div>
+        <div class="exr"><div class="exn">5</div><div class="exnm">Curl a martello manubri</div><span class="pill pg">3×12 · 8–10kg</span></div>
+        <div class="exr"><div class="exn">6</div><div class="exnm">Superman / back extension</div><span class="pill pg">3×15</span></div>
+      </div>
+    </div>
+
+    <div class="card gcard">
+      <div class="chead"><div class="cico">🚶</div><div><div class="cttl">MERCOLEDÌ — Recupero Attivo</div><div class="csub">Zero pesi · movimento leggero · fondamentale</div></div><span class="cbadge">RIPOSO</span></div>
+      <div class="exl">
+        <div class="exr"><div class="exn">→</div><div class="exnm">Passeggiata 30–45 min o nuoto leggero</div><span class="pill pg">a piacere</span></div>
+        <div class="exr"><div class="exn">→</div><div class="exnm">Stretching completo (anche, spalle, gambe)</div><span class="pill pg">15 min</span></div>
+        <div class="exr"><div class="exn">→</div><div class="exnm">Pasto extra del bulk + 8–9h di sonno</div><span class="pill pg">priorità</span></div>
+      </div>
+    </div>
+
+    <div class="card gcard">
+      <div class="chead"><div class="cico">💛</div><div><div class="cttl">GIOVEDÌ — Petto &amp; Tricipiti (Push B)</div><div class="csub">~50 min · varianti diverse da lunedì</div></div><span class="cbadge">PUSH B</span></div>
+      <div class="exl">
+        <div class="exr"><div class="exn">1</div><div class="exnm">Push-up pesati (zaino) o su anelli</div><span class="pill pg">4×max</span></div>
+        <div class="exr"><div class="exn">2</div><div class="exnm">Panca declinata manubri</div><span class="pill pg">3×12 · 8–10kg</span></div>
+        <div class="exr"><div class="exn">3</div><div class="exnm">Pullover con manubrio</div><span class="pill pg">3×12 · 10kg</span></div>
+        <div class="exr"><div class="exn">4</div><div class="exnm">Kick-back tricipiti manubrio</div><span class="pill pg">3×15 · 6–8kg</span></div>
+        <div class="exr"><div class="exn">5</div><div class="exnm">Overhead triceps extension</div><span class="pill pg">3×12 · 8kg</span></div>
+        <div class="exr"><div class="exn">6</div><div class="exnm">Mountain climber</div><span class="pill pg">3×40 sec</span></div>
+      </div>
+    </div>
+
+    <div class="card gcard">
+      <div class="chead"><div class="cico">💙</div><div><div class="cttl">VENERDÌ — Schiena &amp; Bicipiti (Pull B)</div><div class="csub">~50 min · varianti diverse da martedì</div></div><span class="cbadge">PULL B</span></div>
+      <div class="exl">
+        <div class="exr"><div class="exn">1</div><div class="exnm">Trazioni presa supinata</div><span class="pill pg">4×max</span></div>
+        <div class="exr"><div class="exn">2</div><div class="exnm">Lat machine presa inversa</div><span class="pill pg">3×12</span></div>
+        <div class="exr"><div class="exn">3</div><div class="exnm">Facepull ai cavi (spalle posteriori)</div><span class="pill pg">3×15</span></div>
+        <div class="exr"><div class="exn">4</div><div class="exnm">Curl Scott / panca inclinata</div><span class="pill pg">3×10 · 8kg</span></div>
+        <div class="exr"><div class="exn">5</div><div class="exnm">Curl concentrato manubrio</div><span class="pill pg">3×12 p/braccio</span></div>
+        <div class="exr"><div class="exn">6</div><div class="exnm">Bird-dog + Superman alternati</div><span class="pill pg">3×12</span></div>
+      </div>
+    </div>
+
+    <div class="card gcard">
+      <div class="chead"><div class="cico">🧡</div><div><div class="cttl">SABATO — Gambe &amp; Spalle</div><div class="csub">~60 min · sessione più lunga</div></div><span class="cbadge">LEGS</span></div>
+      <div class="exl">
+        <div class="exr"><div class="exn">1</div><div class="exnm">Goblet squat con manubrio</div><span class="pill pg">4×15 · 14–16kg</span></div>
+        <div class="exr"><div class="exn">2</div><div class="exnm">Affondi camminati (walking lunge)</div><span class="pill pg">3×12 p/gamba · 8kg</span></div>
+        <div class="exr"><div class="exn">3</div><div class="exnm">Hip thrust con manubrio / bilanciere</div><span class="pill pg">4×15</span></div>
+        <div class="exr"><div class="exn">4</div><div class="exnm">Romanian deadlift manubri</div><span class="pill pg">3×12 · 12–14kg</span></div>
+        <div class="exr"><div class="exn">5</div><div class="exnm">Leg press (macchina)</div><span class="pill pg">3×15</span></div>
+        <div class="exr"><div class="exn">6</div><div class="exnm">Calf raises mono-gamba</div><span class="pill pg">4×15 p/gamba</span></div>
+        <div class="exr"><div class="exn">7</div><div class="exnm">Lento avanti + alzate laterali superset</div><span class="pill pg">3×12+12 · 6–8kg</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="st gc">📊 Target Palestra</div>
+  <div class="g3">
+    <div class="sc"><div class="sv g">5gg</div><div class="sl">allenamento<br>settimana</div></div>
+    <div class="sc"><div class="sv g">~50</div><div class="sl">min per<br>sessione</div></div>
+    <div class="sc"><div class="sv g">5</div><div class="sl">shake/sett<br>(giorni palestra)</div></div>
+    <div class="sc"><div class="sv g">+2kg</div><div class="sl">manubri ogni<br>2 settimane</div></div>
+    <div class="sc"><div class="sv g">8h</div><div class="sl">sonno<br>ogni notte</div></div>
+    <div class="sc"><div class="sv g">3000</div><div class="sl">kcal/giorno<br>bulk continuo</div></div>
+  </div>
+
+  <div class="tips">
+    <div class="tip"><span class="ti">📏</span><span><strong>Prima settimana:</strong> vai leggero su tutto. Impara la tecnica con l'istruttore. Meglio 8kg puliti che 15kg storti.</span></div>
+    <div class="tip"><span class="ti">📈</span><span>Ogni 2 settimane: se arrivi all'ultima serie senza fatica, <strong>aggiungi 2kg</strong>. Costanza batte intensità.</span></div>
+    <div class="tip"><span class="ti">💬</span><span>Chiedi sempre all'<strong>istruttore di palestra</strong> di controllarti la tecnica. Ci sono apposta, non aver paura.</span></div>
+    <div class="tip"><span class="ti">🍽️</span><span>Non uscire dalla palestra senza aver già pianificato <strong>cosa mangerai entro 60 minuti</strong>. Il recupero inizia subito.</span></div>
+  </div>
+
+</div><!-- /gym -->
+
+<!-- ═══════════ BULK ═══════════ -->
+<div id="bulk" class="tc">
+
+  <div class="st bc" style="margin-top:0">🍽️ Il Bulk — Perché È La Tua Priorità #1</div>
+
+  <div class="bulk-hero">
+    <div class="bh-num">3000<span style="font-size:26px">+</span></div>
+    <div class="bh-txt">
+      <strong>kcal al giorno — il tuo obiettivo minimo.</strong><br>
+      Sei alto 175–180cm e pesi 40–50kg: sei in <strong>sottopeso significativo</strong>. Il tuo metabolismo brucia tutto velocissimamente. Senza un surplus calorico costante, i muscoli non cresceranno — non importa quanto ti alleni. <strong>Il cibo è il tuo allenamento più importante.</strong>
+    </div>
+  </div>
+
+  <!-- MACROS -->
+  <div class="st bc">📊 Macronutrienti Giornalieri (base 50kg)</div>
+  <div class="g3" style="margin-top:0">
+    <div class="sc"><div class="sv b">~80g</div><div class="sl">Proteine<br>1.6g × kg peso<br>uova · pollo · latte</div></div>
+    <div class="sc"><div class="sv b">~380g</div><div class="sl">Carboidrati<br>la tua benzina<br>pasta · riso · pane</div></div>
+    <div class="sc"><div class="sv b">~90g</div><div class="sl">Grassi<br>non eliminarli!<br>olio · noci · uova</div></div>
+  </div>
+
+  <!-- PIANO PASTI -->
+  <div class="st bc">🗓️ Piano Pasti Completo — ~3000 kcal</div>
+  <div class="meal-table">
+    <div class="mt-head">📋 Giornata Tipo — Giorni di Allenamento</div>
+    <div class="mr">
+      <div class="mtime">7:30</div>
+      <div>
+        <div class="mname">☀️ Colazione — NON saltarla mai</div>
+        <div class="mdetail">3 uova strapazzate nel burro + 4 fette pane integrale + 1 bicchiere latte intero (250ml) + 1 banana grande</div>
+      </div>
+      <div class="mkcal">~650</div>
+    </div>
+    <div class="mr">
+      <div class="mtime">10:30</div>
+      <div>
+        <div class="mname">🍎 Spuntino mattina</div>
+        <div class="mdetail">Yogurt greco intero 150g + 30g granola o avena + 1 manciata di noci o mandorle (25g)</div>
+      </div>
+      <div class="mkcal">~420</div>
+    </div>
+    <div class="mr">
+      <div class="mtime">13:00</div>
+      <div>
+        <div class="mname">🍝 Pranzo — pasto principale</div>
+        <div class="mdetail">120g pasta o riso + 160g petto di pollo o tonno o carne rossa + verdure condite con 2 cucchiai olio EVO + frutta + pane</div>
+      </div>
+      <div class="mkcal">~750</div>
+    </div>
+    <div class="mr">
+      <div class="mtime">16:00</div>
+      <div>
+        <div class="mname">⚡ Pre-allenamento (1h prima)</div>
+        <div class="mdetail">2 fette pane con burro di arachidi (30g) + 1 banana + 1 bicchiere latte intero · carboidrati = energia per l'allenamento</div>
+      </div>
+      <div class="mkcal">~480</div>
+    </div>
+    <div class="mr">
+      <div class="mtime">18:00</div>
+      <div>
+        <div class="mname">🥤 Post-allenamento (entro 60 min)</div>
+        <div class="mdetail"><strong>Solo in palestra:</strong> 1 misurino whey (25g) in 250ml latte intero + banana. <strong>A casa con 3kg:</strong> sostituisci con yogurt greco + frutta</div>
+      </div>
+      <div class="mkcal">~350</div>
+    </div>
+    <div class="mr">
+      <div class="mtime">19:30</div>
+      <div>
+        <div class="mname">🍽️ Cena</div>
+        <div class="mdetail">90g pasta o riso + 160g pesce o uova (3) o legumi + verdure + pane + 1 cucchiaio olio EVO</div>
+      </div>
+      <div class="mkcal">~620</div>
+    </div>
+    <div class="mr">
+      <div class="mtime">21:30</div>
+      <div>
+        <div class="mname">🌙 Spuntino sera — fondamentale per ectomorfo</div>
+        <div class="mdetail">200ml latte intero caldo + 40g fiocchi d'avena + 1 cucchiaio miele + eventualmente 2 biscotti secchi</div>
+      </div>
+      <div class="mkcal">~280</div>
+    </div>
+  </div>
+
+  <div class="meal-table" style="margin-top:12px">
+    <div class="mt-head">📋 Giorni di Riposo (Mer e Dom) — Mangia lo stesso!</div>
+    <div class="mr">
+      <div class="mtime">Note</div>
+      <div>
+        <div class="mname">Nei giorni di riposo NON ridurre le calorie</div>
+        <div class="mdetail">Il muscolo cresce durante il recupero, non in palestra. Hai bisogno di calorie anche a riposo. Mantieni tutti i pasti — togli solo lo shake post-workout (non ti sei allenato). Sostituiscilo con uno spuntino normale: yogurt + frutta o pane + burro di arachidi.</div>
+      </div>
+      <div class="mkcal">~2800</div>
+    </div>
+  </div>
+
+  <!-- ALLENAMENTO SETTIMANALE BULK -->
+  <div class="st bc">💪 L'Esercizio nel Bulk — Serve o No?</div>
+  <div class="ib b" style="margin-top:0">
+    <strong>Sì, serve — ma non per bruciare calorie.</strong> L'esercizio nel bulk serve per dare al corpo uno stimolo a costruire <em>muscolo</em> invece di solo grasso. Senza allenamento, il surplus calorico diventa solo adipe. Con l'allenamento, dai al corpo una "direzione" dove mettere le calorie extra.
+  </div>
+
+  <div class="cards" style="margin-top:14px">
+
+    <div class="card bcard">
+      <div class="chead"><div class="cico">📋</div><div><div class="cttl">SETTIMANA BULK — Panoramica</div><div class="csub">Come combinare allenamento e alimentazione ogni giorno</div></div><span class="cbadge">COMPLETO</span></div>
+      <div class="exl">
+        <div class="exr"><div class="exn">Lun</div><div class="exnm">🏋️ Allenamento (Push A) + Pre-workout meal + Shake post</div><span class="pill pb">Giorno attivo</span></div>
+        <div class="exr"><div class="exn">Mar</div><div class="exnm">🏋️ Allenamento (Pull A) + Pre-workout meal + Shake post</div><span class="pill pb">Giorno attivo</span></div>
+        <div class="exr"><div class="exn">Mer</div><div class="exnm">🚶 Camminata 30 min + stretching · NO shake · mangia bulk normale</div><span class="pill pb">Recupero</span></div>
+        <div class="exr"><div class="exn">Gio</div><div class="exnm">🏋️ Allenamento (Push B) + Pre-workout meal + Shake post</div><span class="pill pb">Giorno attivo</span></div>
+        <div class="exr"><div class="exn">Ven</div><div class="exnm">🏋️ Allenamento (Pull B) + Pre-workout meal + Shake post</div><span class="pill pb">Giorno attivo</span></div>
+        <div class="exr"><div class="exn">Sab</div><div class="exnm">🏋️ Allenamento (Gambe) + Pre-workout meal + Shake post</div><span class="pill pb">Giorno attivo</span></div>
+        <div class="exr"><div class="exn">Dom</div><div class="exnm">😴 Riposo totale · NO allenamento · NO shake · mangia bulk normale</div><span class="pill pb">Riposo</span></div>
+      </div>
+    </div>
+
+    <div class="card bcard">
+      <div class="chead"><div class="cico">🥤</div><div><div class="cttl">SCHEMA SHAKE COMPLETO — Tutto l'Anno</div><div class="csub">Quando prenderlo, quando no, cosa mangiare in alternativa</div></div><span class="cbadge">SHAKE</span></div>
+      <div class="exl">
+        <div class="exr"><div class="exn">🏠</div><div class="exnm"><strong>A casa con 3kg:</strong> shake opzionale. Meglio frullato bulk (latte+banana+burro arachidi+avena). Se vuoi whey: 1 misurino dopo l'allenamento.</div><span class="pill pb">Facoltativo</span></div>
+        <div class="exr"><div class="exn">🏋️</div><div class="exnm"><strong>In palestra (luglio+):</strong> 1 misurino whey in 250ml latte intero, entro 60 min dal termine, nei 5 giorni di allenamento.</div><span class="pill pb">Consigliato</span></div>
+        <div class="exr"><div class="exn">😴</div><div class="exnm"><strong>Giorni riposo (Mer, Dom):</strong> NO shake. Sostituisci con yogurt greco + frutta o un pasto completo.</div><span class="pill pb">Non serve</span></div>
+        <div class="exr"><div class="exn">⏰</div><div class="exnm"><strong>Timing ideale:</strong> Post-allenamento entro 60 min. MAI a stomaco vuoto. Abbinalo sempre a un carboidrato (banana, pane, crackers).</div><span class="pill pb">Regola d'oro</span></div>
+        <div class="exr"><div class="exn">🛒</div><div class="exnm"><strong>Cosa comprare:</strong> Whey Protein (siero latte) certificata · min 20g proteine/dose · MyProtein / Optimum Nutrition / BioTech · no gainer · no pre-workout.</div><span class="pill pb">Marca</span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FRULLATO BULK -->
+  <div class="st bc">🥣 Frullato Bulk Fai-da-Te — Meglio di Qualsiasi Gainer</div>
+  <div class="g2" style="margin-top:0">
+    <div class="card bcard">
+      <div class="chead"><div class="cico">🥛</div><div><div class="cttl">RICETTA BASE (~700 kcal)</div><div class="csub">Fallo ogni giorno come spuntino o post-workout</div></div></div>
+      <div class="exl">
+        <div class="exr"><div class="exn">→</div><div class="exnm">Latte intero</div><span class="pill pb">300ml</span></div>
+        <div class="exr"><div class="exn">→</div><div class="exnm">Banana matura</div><span class="pill pb">1 grande</span></div>
+        <div class="exr"><div class="exn">→</div><div class="exnm">Burro di arachidi</div><span class="pill pb">2 cucchiai</span></div>
+        <div class="exr"><div class="exn">→</div><div class="exnm">Fiocchi d'avena</div><span class="pill pb">40g</span></div>
+        <div class="exr"><div class="exn">→</div><div class="exnm">Miele</div><span class="pill pb">1 cucchiaio</span></div>
+        <div class="exr"><div class="exn">+</div><div class="exnm">Opzionale: 1 misurino whey (+25g proteine)</div><span class="pill pb">facoltativo</span></div>
+      </div>
+    </div>
+    <div class="card bcard">
+      <div class="chead"><div class="cico">💡</div><div><div class="cttl">QUANDO FARLO</div><div class="csub">3 momenti ideali nella giornata</div></div></div>
+      <div class="exl">
+        <div class="exr"><div class="exn">1</div><div class="exnm"><strong>Post-allenamento</strong> (invece dello shake, oppure insieme)</div><span class="pill pb">Ideale</span></div>
+        <div class="exr"><div class="exn">2</div><div class="exnm"><strong>Spuntino pomeriggio</strong> quando non riesci a mangiare abbastanza</div><span class="pill pb">Ottimo</span></div>
+        <div class="exr"><div class="exn">3</div><div class="exnm"><strong>Colazione aggiuntiva</strong> se fai fatica ad alzarti con appetito</div><span class="pill pb">OK</span></div>
+        <div class="exr"><div class="exn">⚠️</div><div class="exnm">Non farlo tardi la sera (troppo zucchero prima di dormire)</div><span class="pill pb">Evita</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CIBI TOP -->
+  <div class="st bc">🛒 Cibi Top per il Bulk</div>
+  <div class="g2" style="margin-top:0">
+    <div class="cc yes">
+      <div class="cc-t">✅ Mangia tanto di questi</div>
+      <ul>
+        <li><strong>Uova intere</strong> — proteina + grassi buoni, economiche</li>
+        <li><strong>Latte intero</strong> — calorie + proteine, bevi quello</li>
+        <li><strong>Pasta e riso</strong> — carboidrati puri, 120g a pasto</li>
+        <li><strong>Pane integrale</strong> — ovunque, sempre</li>
+        <li><strong>Pollo, tonno, carne</strong> — proteina magra</li>
+        <li><strong>Burro di arachidi</strong> — calorie dense, sano</li>
+        <li><strong>Noci e mandorle</strong> — grassi sani calorici</li>
+        <li><strong>Avena</strong> — sazia poco, calorie alte</li>
+        <li><strong>Yogurt greco intero</strong> — proteine + grassi</li>
+        <li><strong>Olio EVO</strong> — aggiungi ovunque, +9kcal/g</li>
+        <li><strong>Banana</strong> — carboidrati veloci, ottima post-workout</li>
+        <li><strong>Formaggio</strong> — calorie + grassi + proteine</li>
+      </ul>
+    </div>
+    <div class="cc no">
+      <div class="cc-t">✗ Riduci o evita</div>
+      <ul>
+        <li><strong>Saltare la colazione</strong> — è il pasto più importante</li>
+        <li><strong>Prodotti light / 0%</strong> — vanno bene per chi dimagrisce, non per te</li>
+        <li><strong>Latte scremato</strong> — prendi quello intero</li>
+        <li><strong>Troppe bibite</strong> — riempiono lo stomaco senza nutrire</li>
+        <li><strong>Junk food abbondante</strong> — fa ingrassare, non crescere</li>
+        <li><strong>Cardio eccessivo</strong> — brucia calorie che ti servono</li>
+        <li><strong>Aspettare la fame</strong> — devi mangiare ogni 2–3h</li>
+        <li><strong>Bere acqua prima di mangiare</strong> — riempie lo stomaco</li>
+        <li><strong>Mass gainer in polvere</strong> — troppi zuccheri, caro e inutile</li>
+        <li><strong>Pre-workout / creatina</strong> — non adatti a 15 anni</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TRUCCHI -->
+  <div class="st bc">⚡ Trucchi per Mangiare di Più (Ectomorfo)</div>
+  <div class="tips" style="margin-top:0">
+    <div class="tip"><span class="ti">🥛</span><span>Usa il <strong>latte invece dell'acqua</strong> per cucinare l'avena. +150 kcal senza accorgertene.</span></div>
+    <div class="tip"><span class="ti">🥜</span><span>Aggiungi <strong>burro di arachidi</strong> su pane, gallette, frullati, yogurt. 2 cucchiai = +200 kcal.</span></div>
+    <div class="tip"><span class="ti">🫒</span><span>Metti <strong>olio EVO ovunque</strong>: pasta, verdure, carne. 1 cucchiaio = +120 kcal extra.</span></div>
+    <div class="tip"><span class="ti">⏰</span><span>Mangia ogni <strong>2–3 ore</strong>. Metti un allarme sul telefono se dimentichi — non aspettare la fame.</span></div>
+    <div class="tip"><span class="ti">🎒</span><span>Porta <strong>sempre uno spuntino nello zaino</strong>: noci, crackers con burro arachidi, barrette di avena.</span></div>
+    <div class="tip"><span class="ti">🍳</span><span>Aggiungi <strong>un uovo in più</strong> a qualsiasi pasto. Semplice, economico, efficace.</span></div>
+    <div class="tip"><span class="ti">🧀</span><span>Metti <strong>formaggio su tutto</strong>: pasta, carne, uova. Parmigiano, mozzarella, fontina.</span></div>
+    <div class="tip"><span class="ti">📱</span><span>Usa <strong>MyFitnessPal</strong> le prime 2 settimane per capire davvero quante kcal mangi — spesso si scopre di mangiare molto meno del previsto.</span></div>
+  </div>
+
+  <!-- MONITORAGGIO -->
+  <div class="st bc">📈 Come Monitorarti — Progressione Peso</div>
+  <div class="g3" style="margin-top:0">
+    <div class="sc"><div class="sv b">+0.5</div><div class="sl">kg/settimana<br>obiettivo ideale</div></div>
+    <div class="sc"><div class="sv b">+2</div><div class="sl">kg/mese<br>con costanza</div></div>
+    <div class="sc"><div class="sv b">55–60</div><div class="sl">kg obiettivo<br>entro fine anno</div></div>
+  </div>
+
+  <div class="progress-box">
+    <div class="pb-title">📊 Dove dovresti essere nel tempo</div>
+    <div class="pb-row"><div class="pb-label">Adesso (45kg)</div><div class="pb-bar-wrap"><div class="pb-bar" style="width:35%"></div></div><div class="pb-val">45kg</div></div>
+    <div class="pb-row"><div class="pb-label">Settembre</div><div class="pb-bar-wrap"><div class="pb-bar" style="width:52%"></div></div><div class="pb-val">~50kg</div></div>
+    <div class="pb-row"><div class="pb-label">Fine anno</div><div class="pb-bar-wrap"><div class="pb-bar" style="width:70%"></div></div><div class="pb-val">~58kg</div></div>
+    <div class="pb-row"><div class="pb-label">Primavera 2027</div><div class="pb-bar-wrap"><div class="pb-bar" style="width:88%"></div></div><div class="pb-val">~65kg</div></div>
+  </div>
+
+  <div class="ib w" style="margin-top:14px">
+    ⚠️ <strong>Regola d'oro:</strong> Pesati sempre <strong>la mattina a stomaco vuoto, stesso giorno della settimana</strong>. Se dopo 2 settimane non prendi nulla → aggiungi 200–300 kcal al giorno. Se prendi più di 1kg/sett → sei in surplus eccessivo, riduci leggermente. La bilancia varia di 1–2kg al giorno per acqua e cibo: non ossessionarti con il peso quotidiano.
+  </div>
+
+</div><!-- /bulk -->
+
+<p style="text-align:center;color:var(--muted);font-size:11px;margin-top:44px;letter-spacing:.5px">Scheda generata con Claude · Non sostituisce il parere di un professionista del fitness o della nutrizione</p>
+
+</div>
+
+<script>
+function sw(t){
+  document.querySelectorAll('.tc').forEach(e=>e.classList.remove('active'));
+  document.querySelectorAll('.tb').forEach(e=>e.classList.remove('ha','ga','ba'));
+  document.getElementById(t).classList.add('active');
+  const b=document.querySelectorAll('.tb');
+  if(t==='home')b[0].classList.add('ha');
+  else if(t==='gym')b[1].classList.add('ga');
+  else b[2].classList.add('ba');
+}
+</script>
+</body>
+</html>
